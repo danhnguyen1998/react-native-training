@@ -1,0 +1,51 @@
+{
+  "name": "pg_structure",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "eslint": "eslint .",
+    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
+    "ios": "react-native run-ios",
+    "clean-android": "cd ./android && ./gradlew clean",
+    "build-android": "cd ./android && ./gradlew app:assembleRelease",
+    "build-ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file ./index.js --bundle-output ./ios/main.jsbundle --dev false --platform ios"
+  },
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.6.2",
+    "@react-native-community/cli-platform-android": "^2.9.0",
+    "@react-native-community/netinfo": "^4.4.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "16.10.2",
+    "react-native": "0.61.2",
+    "react-native-elements": "^1.2.6",
+    "react-native-navigation": "3.2.0",
+    "react-native-offline": "^5.1.0",
+    "react-native-splash-screen": "^3.2.0",
+    "react-native-vector-icons": "^6.6.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-actions": "^2.6.5",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "redux-saga": "^1.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/runtime": "^7.6.3",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-devtools": "^4.2.0",
+    "react-test-renderer": "^16.10.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
