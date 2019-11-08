@@ -6,12 +6,15 @@ import HomeScreen from 'screens/home';
 import { APP_HOME_SCREEN } from 'screens/home/navigation';
 import Screen from 'screens/screen2';
 import { APP_SCREEN } from 'screens/screen2/navigation';
+import SigninScreen from 'screens/signin';
+import { APP_SIGNIN } from 'screens/signin/navigation';
 import RootComponent from './boot';
 import theme from './theme';
 
 const Screens = new Map();
 Screens.set(APP_HOME_SCREEN, HomeScreen);
 Screens.set(APP_SCREEN, Screen);
+Screens.set(APP_SIGNIN, SigninScreen);
 
 const WrappedComponent = (Component, store) => {
   return function inject(props) {

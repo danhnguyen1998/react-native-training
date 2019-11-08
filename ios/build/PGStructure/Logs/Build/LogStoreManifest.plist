@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>5374A347-BDD4-4876-B1D3-53D3DC8F5582</key>
+		<key>270AD746-B2A2-47EB-864A-20D0B717B361</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>5374A347-BDD4-4876-B1D3-53D3DC8F5582.xcactivitylog</string>
+			<string>270AD746-B2A2-47EB-864A-20D0B717B361.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -32,13 +32,47 @@
 			<key>signature</key>
 			<string>Building workspace PGStructure with scheme PGStructure and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>594755442.54643905</real>
+			<real>594877872.719648</real>
 			<key>timeStoppedRecording</key>
-			<real>594755634.371364</real>
+			<real>594878001.75136805</real>
 			<key>title</key>
 			<string>Building workspace PGStructure with scheme PGStructure and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>5374A347-BDD4-4876-B1D3-53D3DC8F5582</string>
+			<string>270AD746-B2A2-47EB-864A-20D0B717B361</string>
+		</dict>
+		<key>35507C38-837F-4C1F-9852-07643B01D1A6</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>35507C38-837F-4C1F-9852-07643B01D1A6.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>PGStructure project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>PGStructure</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace PGStructure with scheme PGStructure and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>594877681.71184397</real>
+			<key>timeStoppedRecording</key>
+			<real>594877684.06089103</real>
+			<key>title</key>
+			<string>Building workspace PGStructure with scheme PGStructure and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>35507C38-837F-4C1F-9852-07643B01D1A6</string>
 		</dict>
 	</dict>
 </dict>
