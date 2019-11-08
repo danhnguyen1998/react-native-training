@@ -1,10 +1,11 @@
+import AsyncStorage from '@react-native-community/async-storage';
 import React from 'react';
-import { FlatList, RefreshControl, View } from 'react-native';
+import { Button, FlatList, RefreshControl, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import SplashScreen from 'react-native-splash-screen';
 import SearchCom from '../../containers/components/SearchCom';
 import { fetchPost } from '../../containers/utils/requestConfig';
-import { appSignIn } from '../signin/navigation';
+import { appScreen } from '../screen2/navigation';
 
 export default class HomeComponent extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ export default class HomeComponent extends React.Component {
     const data = {
       token: '31bd05501a480dad1f4e830173bdc025ae8950b0',
     };
+    debugger;
     this.setState({refreshing: true});
     fetchPost('/hapi/data/get/clients', data, null)
       .then(users => {
@@ -55,7 +57,7 @@ export default class HomeComponent extends React.Component {
     );
   };
   onPressDetail = () => {
-    appSignIn(this.props.componentId);
+    appScreen(this.props.componentId);
   };
 
   onSearch = keyword => {
@@ -72,6 +74,7 @@ export default class HomeComponent extends React.Component {
 
     return (
       <View style={{marginTop: 40}}>
+        <Button onPress={()=>AsyncStorage.clear()} title="Del"/>
         <SearchCom onSearch={this.onSearch} />
         <FlatList
           keyExtractor={this.keyExtractor}

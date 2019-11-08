@@ -1,13 +1,13 @@
-import { Navigation } from "react-native-navigation";
-const APP_SIDEBAR_HOME_SCREEN = "app.sidebar.home";
-const APP_HOME_SCREEN = "app.home";
+import { Navigation } from 'react-native-navigation';
+const APP_SIDEBAR_HOME_SCREEN = 'app.sidebar.home';
+const APP_HOME_SCREEN = 'app.home';
 
 const rootHomeScreen = () => {
   Navigation.setDefaultOptions({
     statusBar: {
-      backgroundColor: "blue",
-      style: "light"
-    }
+      backgroundColor: 'blue',
+      style: 'light',
+    },
   });
 
   Navigation.setRoot({
@@ -30,7 +30,6 @@ const rootHomeScreen = () => {
       },
     },
   });
-  
 };
 
 export { APP_HOME_SCREEN, APP_SIDEBAR_HOME_SCREEN, rootHomeScreen };
