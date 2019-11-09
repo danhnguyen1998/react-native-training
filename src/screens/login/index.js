@@ -1,6 +1,7 @@
-import { USER_KEY } from 'containers/utils/config';
+import AsyncStorage from '@react-native-community/async-storage';
 import React from 'react';
-import { AsyncStorage, Button, StyleSheet, TextInput, View } from 'react-native';
+import { Button, StyleSheet, TextInput, View } from 'react-native';
+import { USER_KEY, USER_LOGIN } from '../../containers/constant/index';
 import { fetchPost } from '../../containers/utils/requestConfig';
 import { rootHomeScreen } from '../home/navigation';
 export default class Login extends React.Component {
@@ -12,15 +13,6 @@ export default class Login extends React.Component {
       userFromServer: null,
     };
   }
-
-  validate = () => {
-    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    const regPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-    if (reg.test(this.state.email) === true) {
-      return true;
-    }
-    return false;
-  };
 
   signIn = async () => {
     const loginData = {
@@ -40,27 +32,22 @@ export default class Login extends React.Component {
       remember_me: 1,
     };
 
-    const {email, password} = this.state;
-    
-
     fetchPost('hapi/auth/login', loginData, null, true)
       .then(user => {
-        if(user.error){
-          alert("Sai tai khoan");
+        if (user.error) {
+          alert('Invalid email or password!');
         } else {
-          AsyncStorage.setItem(USER_KEY, 'test');
+          AsyncStorage.setItem(USER_KEY, user.result.token);
+          AsyncStorage.setItem(USER_LOGIN, JSON.stringify(user.result.user));
           rootHomeScreen(this.props.componentId);
-
         }
-        
-        
       })
       .catch(error => {
-        this.setState({userFromServer: null});
+        console.log(error);
       });
   };
+
   render() {
-    const validation = this.validate();
     return (
       <View style={styles.container}>
         <TextInput
@@ -93,7 +80,6 @@ export default class Login extends React.Component {
           onPress={this.signIn}
           // disabled={validation === true ? false : true}
         />
-        
       </View>
     );
   }

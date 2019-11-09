@@ -40,6 +40,40 @@
 			<key>uniqueIdentifier</key>
 			<string>270AD746-B2A2-47EB-864A-20D0B717B361</string>
 		</dict>
+		<key>8A41CA14-658F-4A63-8E77-A508E190C0E4</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8A41CA14-658F-4A63-8E77-A508E190C0E4.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>PGStructure project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>PGStructure</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace PGStructure with scheme PGStructure and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>594923793.51946998</real>
+			<key>timeStoppedRecording</key>
+			<real>594923795.10541701</real>
+			<key>title</key>
+			<string>Building workspace PGStructure with scheme PGStructure and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>8A41CA14-658F-4A63-8E77-A508E190C0E4</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

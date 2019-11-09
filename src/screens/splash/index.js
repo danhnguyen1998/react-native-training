@@ -1,9 +1,9 @@
+import AsyncStorage from '@react-native-community/async-storage';
 import React from 'react';
-import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
-import { USER_KEY } from '../../containers/utils/config';
+import { StyleSheet, Text, View } from 'react-native';
+import { USER_KEY } from '../../containers/constant/index';
 import { rootHomeScreen } from '../home/navigation';
 import { appLoginScreen } from '../login/navigation';
-
 
 export default class Initializing extends React.Component {
   async componentDidMount() {

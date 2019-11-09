@@ -1,10 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React from 'react';
-import { Button, FlatList, RefreshControl, View } from 'react-native';
+import { Alert, Button, FlatList, RefreshControl, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import SplashScreen from 'react-native-splash-screen';
 import SearchCom from '../../containers/components/SearchCom';
 import { fetchPost } from '../../containers/utils/requestConfig';
+import { appLoginScreen } from '../login/navigation';
 import { appScreen } from '../screen2/navigation';
 
 export default class HomeComponent extends React.Component {
@@ -25,7 +26,6 @@ export default class HomeComponent extends React.Component {
     const data = {
       token: '31bd05501a480dad1f4e830173bdc025ae8950b0',
     };
-    debugger;
     this.setState({refreshing: true});
     fetchPost('/hapi/data/get/clients', data, null)
       .then(users => {
@@ -66,6 +66,33 @@ export default class HomeComponent extends React.Component {
     });
   };
 
+  logout = () => {
+    Alert.alert(
+      'Logout',
+      'Do you want to log out?',
+      [
+        {
+          text: 'Remember me',
+          onPress: () => appLoginScreen(this.props.componentId),
+        },
+
+        {
+          text: "Don't remember me!",
+          onPress: () => {
+            AsyncStorage.clear();
+            appLoginScreen(this.props.componentId);
+          },
+        },
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel'),
+          style: 'cancel',
+        },
+      ],
+      {cancelable: false},
+    );
+  };
+
   render() {
     var {usersFromServer, keyword} = this.state;
     usersFromServer = usersFromServer.filter(user => {
@@ -74,7 +101,7 @@ export default class HomeComponent extends React.Component {
 
     return (
       <View style={{marginTop: 40}}>
-        <Button onPress={()=>AsyncStorage.clear()} title="Del"/>
+        <Button onPress={this.logout} title="Logout" />
         <SearchCom onSearch={this.onSearch} />
         <FlatList
           keyExtractor={this.keyExtractor}
