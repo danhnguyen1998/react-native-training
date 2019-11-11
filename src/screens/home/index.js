@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import React from 'react';
 import { Alert, Button, FlatList, RefreshControl, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import { Navigation } from 'react-native-navigation';
 import SplashScreen from 'react-native-splash-screen';
 import SearchCom from '../../containers/components/SearchCom';
 import { fetchPost } from '../../containers/utils/requestConfig';
@@ -18,7 +19,13 @@ export default class HomeComponent extends React.Component {
             keyword: '',
         };
     }
+    componentWillUnmount() {
+        if (this.navigationEventListener) {
+            this.navigationEventListener.remove();
+        }
+    }
     componentDidMount() {
+        this.navigationEventListener = Navigation.events().bindComponent(this);
         this.refreshDataFromServer();
         SplashScreen.hide();
     }
@@ -29,7 +36,6 @@ export default class HomeComponent extends React.Component {
         this.setState({ refreshing: true });
         fetchPost('/hapi/data/get/clients', data, null)
             .then(users => {
-
                 this.setState({
                     usersFromServer: users.result.clients,
                     dataSearch: users.result.clients,
@@ -41,6 +47,15 @@ export default class HomeComponent extends React.Component {
                 this.setState({ refreshing: false });
             });
     };
+    navigationButtonPressed({ buttonId }) {
+        if (buttonId == 'logoutButton') {
+            this.logout();
+        }
+        if (buttonId == 'backButton') {
+            Navigation.pop(this.props.componentId);
+        }
+    }
+
     onRefresh = () => {
         this.refreshDataFromServer();
     };
@@ -53,12 +68,11 @@ export default class HomeComponent extends React.Component {
                 title={item.full_name}
                 subtitle={item.email}
                 bottomDivider
-                onPress={this.onPressDetail}
+                onPress={() => {
+                    appScreen(this.props.componentId, item);
+                }}
             />
         );
-    };
-    onPressDetail = () => {
-        appScreen(this.props.componentId);
     };
 
     onSearch = keyword => {

@@ -9,7 +9,7 @@ const appScreen = (componentId, passProps) =>
             name: APP_SCREEN,
             options: {
                 topBar: {
-                    visible: false,
+                    visible: true,
                     height: 0,
                 },
             },
