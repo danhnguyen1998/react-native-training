@@ -5,16 +5,16 @@ import { logOutAction } from "./actions";
 
 /** Sage logout */
 function* logOutWatcher() {
-  yield takeLatest(logOutAction, function*() {
-    try {
-      yield put(onLoadingAction());
-      yield AsyncStorage.clear();
-    } catch (error) {
-      yield put(logErrorAction(error.message));
-    } finally {
-      yield put(offLoadingAction());
-    }
-  });
+    yield takeLatest(logOutAction, function* () {
+        try {
+            yield put(onLoadingAction());
+            yield AsyncStorage.clear();
+        } catch (error) {
+            yield put(logErrorAction(error.message));
+        } finally {
+            yield put(offLoadingAction());
+        }
+    });
 }
 
 export default { logOutWatcher };

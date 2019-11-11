@@ -8,14 +8,14 @@ import { registerScreens } from './src/registerScreens';
 const store = configureStore();
 
 Navigation.events().registerAppLaunchedListener(() => {
-  persistStore(store, {}, () => {
-    checkInternetConnection().then(isConnected => {
-      store.dispatch({
-        type: offlineActionTypes.CONNECTION_CHANGE,
-        payload: isConnected,
-      });
-      registerScreens(store);
-      appSplashScreen();
+    persistStore(store, {}, () => {
+        checkInternetConnection().then(isConnected => {
+            store.dispatch({
+                type: offlineActionTypes.CONNECTION_CHANGE,
+                payload: isConnected,
+            });
+            registerScreens(store);
+            appSplashScreen();
+        });
     });
-  });
 });

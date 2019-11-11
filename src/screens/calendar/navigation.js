@@ -1,8 +1,8 @@
 import { Navigation } from 'react-native-navigation';
 
-const APP_SPLASH_SCREEN = 'app.splash';
+const APP_CALENDAR_SCREEN = 'app.calendar';
 
-const appSplashScreen = () => {
+const appCalendarScreen = () => {
     Navigation.setDefaultOptions({
         statusBar: {
             backgroundColor: 'blue',
@@ -13,15 +13,15 @@ const appSplashScreen = () => {
     Navigation.setRoot({
         root: {
             stack: {
-                id: 'splashStack',
+                id: 'serviceStack',
                 children: [
                     {
                         component: {
-                            id: APP_SPLASH_SCREEN,
-                            name: APP_SPLASH_SCREEN,
+                            id: APP_CALENDAR_SCREEN,
+                            name: APP_CALENDAR_SCREEN,
                             options: {
                                 title: {
-                                    text: 'Splash',
+                                    text: 'Calendar',
                                 },
                             },
                         },
@@ -32,5 +32,5 @@ const appSplashScreen = () => {
     });
 };
 
-export { APP_SPLASH_SCREEN, appSplashScreen };
+export { APP_CALENDAR_SCREEN, appCalendarScreen };
 
