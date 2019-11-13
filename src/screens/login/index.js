@@ -2,11 +2,14 @@ import AsyncStorage from '@react-native-community/async-storage';
 import SelectRoleModal from 'containers/components/SelectRoleModal';
 import React from 'react';
 import { Button, StyleSheet, TextInput, View } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { USER_KEY, USER_LOGIN } from '../../containers/constant/index';
 import { fetchPost } from '../../containers/utils/requestConfig';
 import { rootHomeScreen } from '../home/navigation';
+import { logInAction } from './redux/actions';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -115,3 +118,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 });
+
+const mapDispatchToProps = dispatch => bindActionCreators({ logInAction }, dispatch);
+export default connect(
+    null,
+    mapDispatchToProps
+)(Login);
