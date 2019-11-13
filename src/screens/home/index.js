@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React from 'react';
-import { Alert, Button, FlatList, RefreshControl, View } from 'react-native';
+import { Alert, FlatList, RefreshControl, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
 import SplashScreen from 'react-native-splash-screen';
@@ -116,7 +116,6 @@ export default class HomeComponent extends React.Component {
 
         return (
             <View style={{ marginTop: 40 }}>
-                <Button onPress={this.logout} title="Logout" />
                 <SearchCom onSearch={this.onSearch} />
                 <FlatList
                     keyExtractor={this.keyExtractor}

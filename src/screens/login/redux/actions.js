@@ -1,7 +1,9 @@
 import { createActions } from 'redux-actions';
 
 const actions = createActions({
-    LOGIN_ACTION: null
+    LOG_IN_ACTION: (payload) => ({
+        payload
+    })
 });
 
-export const {logInAction} = actions;
+export const { logInAction } = actions;

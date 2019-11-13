@@ -3,13 +3,6 @@ import { Navigation } from 'react-native-navigation';
 const APP_LOGIN_SCREEN = 'app.login';
 
 const appLoginScreen = () => {
-    Navigation.setDefaultOptions({
-        statusBar: {
-            backgroundColor: 'blue',
-            style: 'light',
-        },
-    });
-
     Navigation.setRoot({
         root: {
             stack: {
@@ -23,7 +16,11 @@ const appLoginScreen = () => {
                                 title: {
                                     text: 'Login',
                                 },
+                                topBar: {
+                                    visible: false
+                                }
                             },
+                            
                         },
                     },
                 ],

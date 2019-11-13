@@ -19,7 +19,7 @@ class Login extends React.Component {
         };
     }
 
-    signIn = async () => {
+    saga = () => {
         const loginData = {
             device_info: {
                 device: {},
@@ -36,6 +36,11 @@ class Login extends React.Component {
             password: this.state.password,
             remember_me: 1,
         };
+        this.props.logInAction(loginData);
+    }
+
+    signIn = () => {
+
 
         fetchPost('hapi/auth/login', loginData, null, true)
             .then(user => {
@@ -86,12 +91,17 @@ class Login extends React.Component {
                 />
                 <Button
                     title="Sign In"
-                    onPress={this.signIn}
+                    onPress={this.saga}
                 // disabled={validation === true ? false : true}
                 />
                 <Button
                     title="Sign Up"
                     onPress={this.signUp}
+                // disabled={validation === true ? false : true}
+                />
+                <Button
+                    title="Sign Up"
+                    onPress={this.saga}
                 // disabled={validation === true ? false : true}
                 />
                 <SelectRoleModal ref={'selectRoleModal'}></SelectRoleModal>
@@ -119,8 +129,10 @@ const styles = StyleSheet.create({
     },
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ logInAction }, dispatch);
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ logInAction }, dispatch);
+
 export default connect(
     null,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(Login);
