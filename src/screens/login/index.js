@@ -1,12 +1,8 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import SelectRoleModal from 'containers/components/SelectRoleModal';
 import React from 'react';
 import { Button, StyleSheet, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { USER_KEY, USER_LOGIN } from '../../containers/constant/index';
-import { fetchPost } from '../../containers/utils/requestConfig';
-import { rootHomeScreen } from '../home/navigation';
 import { logInAction } from './redux/actions';
 
 class Login extends React.Component {
@@ -15,11 +11,10 @@ class Login extends React.Component {
         this.state = {
             email: '',
             password: '',
-            userFromServer: null,
         };
     }
 
-    saga = () => {
+    login = () => {
         const loginData = {
             device_info: {
                 device: {},
@@ -38,24 +33,6 @@ class Login extends React.Component {
         };
         this.props.logInAction(loginData);
     }
-
-    signIn = () => {
-
-
-        fetchPost('hapi/auth/login', loginData, null, true)
-            .then(user => {
-                if (user.error) {
-                    alert('Invalid email or password!');
-                } else {
-                    AsyncStorage.setItem(USER_KEY, user.result.token);
-                    AsyncStorage.setItem(USER_LOGIN, JSON.stringify(user.result.user));
-                    rootHomeScreen(this.props.componentId);
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
 
     signUp = () => {
         this.refs.selectRoleModal.showRoleModal();
@@ -90,18 +67,13 @@ class Login extends React.Component {
                     }}
                 />
                 <Button
-                    title="Sign In"
-                    onPress={this.saga}
+                    title="Login In"
+                    onPress={this.login}
                 // disabled={validation === true ? false : true}
                 />
                 <Button
                     title="Sign Up"
                     onPress={this.signUp}
-                // disabled={validation === true ? false : true}
-                />
-                <Button
-                    title="Sign Up"
-                    onPress={this.saga}
                 // disabled={validation === true ? false : true}
                 />
                 <SelectRoleModal ref={'selectRoleModal'}></SelectRoleModal>
