@@ -1,8 +1,8 @@
 import { Navigation } from 'react-native-navigation';
 
-const APP_CALENDAR_SCREEN = 'app.calendar';
+const APP_GALLERY_SCREEN = 'app.gallery';
 
-const appCalendarScreen = () => {
+const appGalleryScreen = () => {
     Navigation.setDefaultOptions({
         statusBar: {
             backgroundColor: 'blue',
@@ -13,15 +13,15 @@ const appCalendarScreen = () => {
     Navigation.setRoot({
         root: {
             stack: {
-                id: 'serviceStack',
+                id: 'galleryStack',
                 children: [
                     {
                         component: {
-                            id: APP_CALENDAR_SCREEN,
-                            name: APP_CALENDAR_SCREEN,
+                            id: APP_GALLERY_SCREEN,
+                            name: APP_GALLERY_SCREEN,
                             options: {
                                 title: {
-                                    text: 'Calendar',
+                                    text: 'Gallery',
                                 },
                             },
                         },
@@ -32,5 +32,5 @@ const appCalendarScreen = () => {
     });
 };
 
-export { APP_CALENDAR_SCREEN, appCalendarScreen };
+export { APP_GALLERY_SCREEN, appGalleryScreen };
 

@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import { APP_CALENDAR_SCREEN } from '../calendar/navigation';
+import { APP_GALLERY_SCREEN } from '../gallery/navigation';
 import { APP_SERVICE_SCREEN } from '../service/navigation';
 const APP_SIDEBAR_HOME_SCREEN = 'app.sidebar.home';
 const APP_HOME_SCREEN = 'app.home';
@@ -80,20 +80,20 @@ const rootHomeScreen = () => {
                     },
                     {
                         stack: {
-                            id: 'calendarStack',
+                            id: 'galleryStack',
                             children: [
                                 {
                                     component: {
-                                        id: APP_CALENDAR_SCREEN,
-                                        name: APP_CALENDAR_SCREEN,
+                                        id: APP_GALLERY_SCREEN,
+                                        name: APP_GALLERY_SCREEN,
                                         options: {
                                             topBar: {
                                                 title: {
-                                                    text: 'Calendar'
+                                                    text: 'Gallery'
                                                 }
                                             },
                                             bottomTab: {
-                                                text: 'Calendar',
+                                                text: 'Gallery',
                                             },
                                             topBar: {
                                                 rightButtons: [

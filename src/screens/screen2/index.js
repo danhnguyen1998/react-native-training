@@ -7,7 +7,6 @@ export default class ScreenComponent extends React.Component {
         console.log(this.props);
     }
     render() {
-
         return (
             <View style={styles.container}>
                 <View>

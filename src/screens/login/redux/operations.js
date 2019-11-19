@@ -19,7 +19,6 @@ function* logInWatcher() {
                 AsyncStorage.setItem(USER_LOGIN, JSON.stringify(response.result.user));
                 rootHomeScreen();
             }
-
         } catch (error) {
             yield put(logErrorAction(error.message));
         } finally {
