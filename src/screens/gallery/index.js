@@ -9,7 +9,7 @@ export default class GalleryComponent extends React.Component {
         super(props);
         this.state = {
             localPhotos: [],
-            selectedPhotos: []
+            selectedPhotoIndex: 0,
         }
     }
 
@@ -33,10 +33,29 @@ export default class GalleryComponent extends React.Component {
     onPressAddPhotoBtn = () => {
         this.ActionSheetSelectPhoto.show();
     };
+
+    showActionSheetDelete = index => {
+        this.setState({
+            selectedPhotoIndex: index
+        });
+        this.ActionSheetDeletePhoto.show();
+    };
+
+    onActionDeleteDone = index => {
+        if (index === 0) {
+            const array = [...this.state.localPhotos];
+            array.splice(this.state.selectedPhotoIndex, 1);
+            this.setState({ localPhotos: array });
+        }
+    };
     onActionSelectPhotoDone = index => {
         switch (index) {
             case 0:
-                console.log(0);
+                ImagePicker.openCamera({}).then(image => {
+                    this.setState({
+                        localPhotos: [...this.state.localPhotos, image]
+                    });
+                });
                 break;
             case 1:
                 ImagePicker.openPicker({
@@ -48,7 +67,6 @@ export default class GalleryComponent extends React.Component {
                             localPhotos: [...this.state.localPhotos, image]
                         });
                     });
-                    console.log(images)
                 }).catch(error => {
                     alert(JSON.stringify(error));
                 });
@@ -60,7 +78,10 @@ export default class GalleryComponent extends React.Component {
 
     renderListPhotos = localPhotos => {
         const photos = localPhotos.map((photo, index) => (
-            <TouchableOpacity>
+            <TouchableOpacity key={index}
+                onLongPress={() => {
+                    this.showActionSheetDelete(index);
+                }}>
                 <Image style={styles.photo} source={{ uri: photo.path }} />
             </TouchableOpacity>
         ));
@@ -101,6 +122,16 @@ export default class GalleryComponent extends React.Component {
                     destructiveButtonIndex={1}
                     onPress={index => {
                         this.onActionSelectPhotoDone(index);
+                    }}
+                />
+                <ActionSheet
+                    ref={o => (this.ActionSheetDeletePhoto = o)}
+                    title={'Confirm delete photo'}
+                    options={['Delete', 'Cancel']}
+                    cancelButtonIndex={1}
+                    destructiveButtonIndex={0}
+                    onPress={index => {
+                        this.onActionDeleteDone(index);
                     }}
                 />
             </View>
